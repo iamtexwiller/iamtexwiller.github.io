@@ -103,3 +103,15 @@ body {
   text-decoration: none;
   color: #213738;
 }
+
+
+/* Links dentro das certificações */
+#satir a {
+  color: #ffffff;          /* branco */
+  text-decoration: none;   /* remove sublinhado padrão */
+}
+
+#satir a:hover {
+  color: #CDFF8E;          /* verde claro ao passar o mouse */
+  text-decoration: underline; /* sublinhado discreto no hover */
+}
