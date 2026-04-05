@@ -7,21 +7,19 @@
 }
 
 body {
-  background: url(https://cdn.arstechnica.net/wp-content/uploads/2016/10/sierra.jpg);
-  background-size: cover;
+  background: #0f1419;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
+  color: #cdd3de;
 }
 
-.temizle {
-  clear: both;
-}
+.temizle { clear: both; }
 
 #kapsa {
   width: 100%;
   max-width: 800px;
-  margin: 15px auto;
+  margin: 20px auto;
   opacity: 0.95;
 }
 
@@ -39,9 +37,7 @@ body {
   font-weight: bold;
 }
 
-#islem {
-  float: right;
-}
+#islem { float: right; }
 
 #y, #s, #k {
   width: 12px;
@@ -63,129 +59,47 @@ body {
   text-align: right;
   padding: 7px 10px 7px 0;
   float: left;
-  colorAqui está a versão completa do **HTML e CSS** já ajustada para mostrar **30 linhas numeradas** no estilo editor de código:
+  color: #cdd3de;
+}
 
----
+.numara { display: block; }
 
-### 📄 `index.html`
+#satir {
+  background: #1B2225;
+  display: inline-block;
+  padding: 7px 10px;
+  width: calc(100% - 41px);
+}
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Kernel Panic Comedy — Profile</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="kapsa">
+.yorum {
+  color: #98A8B5;
+  font-style: italic;
+}
 
-    <div id="ust">
-      <h4 id="baslik">PERSONAL CODE EDITOR</h4>
-      <div id="islem">
-        <div id="y"></div>
-        <div id="s"></div>
-        <div id="k"></div>
-      </div>
-      <div class="temizle"></div>
-    </div>
+.yorum a {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+  color: aquamarine;
+}
 
-    <div id="orta">
+.cl { color: #8EDCF5; }
+.id { color: #F3A5F7; }
+.beyaz { color: #cccccc; }
+.secici { color: #CDFF8E; }
+.ozellik { color: #FFFFFF; }
+.onemli { color: #FFA9A9; font-style: italic; }
 
-      <div id="no">
-        <!-- 30 linhas -->
-        <!-- Geradas manualmente -->
-        <span class="numara">1</span>
-        <span class="numara">2</span>
-        <span class="numara">3</span>
-        <span class="numara">4</span>
-        <span class="numara">5</span>
-        <span class="numara">6</span>
-        <span class="numara">7</span>
-        <span class="numara">8</span>
-        <span class="numara">9</span>
-        <span class="numara">10</span>
-        <span class="numara">11</span>
-        <span class="numara">12</span>
-        <span class="numara">13</span>
-        <span class="numara">14</span>
-        <span class="numara">15</span>
-        <span class="numara">16</span>
-        <span class="numara">17</span>
-        <span class="numara">18</span>
-        <span class="numara">19</span>
-        <span class="numara">20</span>
-        <span class="numara">21</span>
-        <span class="numara">22</span>
-        <span class="numara">23</span>
-        <span class="numara">24</span>
-        <span class="numara">25</span>
-        <span class="numara">26</span>
-        <span class="numara">27</span>
-        <span class="numara">28</span>
-        <span class="numara">29</span>
-        <span class="numara">30</span>
-      </div>
+#alt {
+  background: #CEF3DD;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+}
 
-      <div id="satir">
-
-        <span class="yorum">/*  
-          Here is my profile -> <a href="https://github.com/kernelPanicComedy">Tex</a>  
-        */</span><br>
-
-        <span class="cl">.personal</span><br>
-        <span class="beyaz">{</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;name</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Tex"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;role</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Cloud & Linux Specialist"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;location</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"São Paulo, Brazil"</span><span class="beyaz">;</span><br>
-        <span class="beyaz">}</span><br><br>
-
-        <span class="cl">.certifications</span><br>
-        <span class="beyaz">{</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;azure</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Administrator Associate"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;aws</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Cloud Practitioner"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;linux</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"LPIC-1"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;redhat</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Delivery Specialist"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;vmware</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"CTA DCV 2024"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;github</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Foundations"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;itil</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"ITIL® 4 Foundation"</span><span class="beyaz">;</span><br>
-        <span class="beyaz">}</span><br><br>
-
-        <span class="cl">.projects</span><br>
-        <span class="beyaz">{</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;terraform</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Infrastructure as Code"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;kubernetes</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Study Cluster"</span><span class="beyaz">;</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;portfolio</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Kernel Panic Comedy"</span><span class="beyaz">;</span><br>
-        <span class="beyaz">}</span><br><br>
-
-        <span class="id">#favorite-quote</span><br>
-        <span class="beyaz">{</span><br>
-        <span class="secici">&nbsp;&nbsp;&nbsp;content</span> <span class="beyaz">:</span>
-        <span class="ozellik">&nbsp;"Your future is created by what you do today, not tomorrow."</span><span class="beyaz">;</span><br>
-        <span class="beyaz">}</span><br>
-
-      </div>
-
-      <div class="temizle"></div>
-    </div>
-
-    <div id="alt">
-      &copy; <a href="https://github.com/kernelPanicComedy">Tex</a>
-    </div>
-
-  </div>
-</body>
-</html>
+#alt a {
+  margin-left: 5px;
+  border-bottom: 1px dotted;
+  text-decoration: none;
+  color: #213738;
+}
