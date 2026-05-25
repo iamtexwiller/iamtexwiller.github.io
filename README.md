@@ -1,38 +1,83 @@
-# 👨‍💻 Tex Willer
+# iamtexwiller.github.io
 
-**Cloud & Linux Specialist**  
-📍 São Paulo, Brazil  
+Personal portfolio and resume landing page for **Tex Willer Gusman dos Santos** — Application Support Engineer L2 | Hybrid Cloud & On-Prem @ B3.
 
-> "Your future is created by what you do today, not tomorrow."
-
----
-
-## 🔗 Redes Sociais
-- [GitHub](https://github.com/iamtexwiller)
-- [LinkedIn](https://www.linkedin.com/in/eutexwiller)
-- [Instagram](https://instagram.com/tex.willer)
+🌐 Live at: [texwiller.com.br](https://texwiller.com.br)
 
 ---
 
-## 🎓 Certificações
-- [Azure Administrator Associate](https://learn.microsoft.com/en-us/certifications/azure-administrator/)
-- [AWS Cloud Practitioner](https://aws.amazon.com/certification/certified-cloud-practitioner/)
-- [LPIC-1 Linux Administrator](https://www.lpi.org/our-certifications/lpic-1-overview)
-- [Red Hat Delivery Specialist](https://www.redhat.com/en/services/certification)
-- [VMware CTA DCV 2024](https://www.vmware.com/education-services/certification.html)
-- [GitHub Foundations](https://github.com/skills)
-- [ITIL® 4 Foundation](https://www.axelos.com/certifications/itil-4-foundation)
+## 🏗️ Built with
+
+- **HTML5** — semantic structure, no frameworks
+- **CSS3** — custom properties, CSS Grid, Flexbox, keyframe animations
+- **Vanilla JavaScript** — no dependencies, no bundler
+- **Google Fonts** — Bebas Neue, Syne, JetBrains Mono
+
+No build step. No npm. No framework. Just files.
 
 ---
 
-## 🚀 Projetos
-- **Azure Labs** → Hands-on labs para administração de ambientes Azure  
-- **Terraform IaC** → Automação de infraestrutura com código  
-- **Kernel Panic Comedy** → Blog criativo e portfólio pessoal  
-- **Linux Inventory** → Scripts para inventário e monitoramento de servidores  
-- **Kubernetes Study Cluster** → Cluster de estudos para orquestração de containers  
+## 📁 Project structure
+
+```
+iamtexwiller.github.io/
+│
+├── index.html        → Full HTML structure
+├── css/
+│   └── style.css     → All styles: variables, layout, animations, responsive
+├── js/
+│   └── main.js       → Custom cursor, scroll reveal, active nav on scroll
+└── assets/
+    └── *.png         → Certification badges (sourced from Credly & Microsoft Learn)
+```
 
 ---
 
-## 📬 Contato
-Se quiser trocar ideias sobre Cloud, Linux ou DevOps, me chame pelo [LinkedIn](https://www.linkedin.com/in/eutexwiller) ou abra uma issue aqui no GitHub.
+## 🎨 Design decisions
+
+| Decision | Rationale |
+|---|---|
+| Dark background `#000` | High contrast, reduces eye strain, editorial feel |
+| Accent color `#c8ff00` (lime) | Strong visual identity, stands out on dark |
+| Bebas Neue for headings | Bold, impactful — matches the infrastructure/ops profile |
+| JetBrains Mono for body | Nods to the technical nature of the work |
+| CSS Grid for layout | No framework needed; full control over structure |
+| `mix-blend-mode: difference` on nav | Keeps nav readable over any background |
+| Scroll reveal via IntersectionObserver | Native API, zero dependencies |
+
+---
+
+## ☁️ Infrastructure & Hosting
+
+Hosted on **Azure Static Web Apps** (Free tier) with custom domain.
+
+| Service | Role |
+|---|---|
+| Azure Static Web Apps | Hosting + SSL + global CDN |
+| GitHub Actions | CI/CD — auto deploy on every push to `main` |
+| Registro.br | Domain registrar for `texwiller.com.br` |
+
+Deploy pipeline:
+
+```
+git push → GitHub Actions → Azure Static Web Apps → texwiller.com.br
+```
+
+Every push to `main` triggers an automatic build and deploy via the GitHub Actions workflow injected by Azure at setup time. Zero manual steps after the initial configuration.
+
+---
+
+## 🏷️ Certification badges
+
+Badges are loaded from the `assets/` folder with a Credly/Microsoft Learn URL as `onerror` fallback.
+
+Sources:
+- **Credly** — AWS, LPIC-1, VCTA-DCV, ITIL 4, Red Hat, Oracle OCI
+- **Microsoft Learn** — AZ-104, SC-900, DP-900, PL-900, AI-901, AB-730, AB-731
+- **GitHub** — GitHub Foundations
+
+---
+
+## 📄 License
+
+This project is open source. Feel free to use the structure as a base for your own portfolio — just swap the content.
