@@ -25,6 +25,46 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Azure Application Insights -->
+  <script type="text/javascript">
+    !(function (cfg) {
+      function n(e) {
+        t[e] = function () {
+          var n = arguments;
+          t.queue.push(function () {
+            t[e].apply(t, n);
+          });
+        };
+      }
+      var t = {
+        config: cfg,
+      },
+        r = document,
+        u = window,
+        f = "script",
+        e = [],
+        o = function () {
+          var e = r.createElement(f);
+          (e.src = cfg.url || "https://js.monitor.azure.com/scripts/b/ai.2.min.js"),
+            r.getElementsByTagName(f)[0].parentNode.appendChild(e);
+        };
+      (cfg.name = "appInsights"),
+        (cfg.queue = e),
+        (cfg.version = 2),
+        n("trackEvent"),
+        n("trackException"),
+        n("trackPageView"),
+        n("trackTrace"),
+        o();
+      var s = u.appInsights || t;
+      (u.appInsights = s),
+        s.trackPageView();
+    })({
+      connectionString:
+        "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=f237551e-fca5-4ce3-ae0a-7c00eb184042",
+    });
+  </script>
+
 </head>
 
 <body>
@@ -145,13 +185,19 @@
     </div>
     <div class="about-right">
       <p class="about-text reveal">
-        Antes de entrar no mercado corporativo, eu já consertava o que estava quebrado — só que na minha própria empresa. 
-        A Texnologia Descomplicada foi onde aprendi que tecnologia só tem valor quando funciona de verdade, para pessoas de verdade.<br><br>
-        Essa mentalidade me acompanhou por Editora Globo, Atos, RTM e, hoje, na B3 — onde cada segundo de indisponibilidade tem peso financeiro real. 
-        Aqui, operar em ambiente de missão crítica não é um diferencial no currículo: é a responsabilidade do dia a dia.<br><br>
-        Com mais de 15 anos de experiência e um stack que vai de Linux e VMware até Kubernetes e Dynatrace, me especializei em manter sistemas complexos no ar, 
+        Antes de entrar no mercado corporativo, eu já consertava o que estava quebrado — só que na minha própria
+        empresa.
+        A Texnologia Descomplicada foi onde aprendi que tecnologia só tem valor quando funciona de verdade, para pessoas
+        de verdade.<br><br>
+        Essa mentalidade me acompanhou por Editora Globo, Atos, RTM e, hoje, na B3 — onde cada segundo de
+        indisponibilidade tem peso financeiro real.
+        Aqui, operar em ambiente de missão crítica não é um diferencial no currículo: é a responsabilidade do dia a
+        dia.<br><br>
+        Com mais de 15 anos de experiência e um stack que vai de Linux e VMware até Kubernetes e Dynatrace, me
+        especializei em manter sistemas complexos no ar,
         investigar o que ninguém quer investigar e automatizar o que não deveria ser feito manualmente.<br><br>
-        Agora, expando minha visão para Inteligência Artificial — porque acredito que o próximo nível da infraestrutura crítica passa inevitavelmente por ela.
+        Agora, expando minha visão para Inteligência Artificial — porque acredito que o próximo nível da infraestrutura
+        crítica passa inevitavelmente por ela.
       </p>
     </div>
   </div>
