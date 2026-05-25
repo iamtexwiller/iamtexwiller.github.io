@@ -28,35 +28,28 @@
 
   <!-- Azure Application Insights -->
   <script type="text/javascript">
-    !(function (cfg) {
-      function n(e) {
-        t[e] = function () {
-          var n = arguments;
-          t.queue.push(function () { t[e].apply(t, n) })
-        }
+    var appInsights = window.appInsights || function (a) {
+      function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } }
+      var c = { config: a }, d = document, e = window;
+      setTimeout(function () {
+        var b = d.createElement("script");
+        b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";
+        d.getElementsByTagName("script")[0].parentNode.appendChild(b)
+      });
+      try { c.cookie = d.cookie } catch (a) { }
+      c.queue = [];
+      for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop());
+      if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackPage"), b("stopTrackPage"), b("startTrackEvent"), b("stopTrackEvent"), !a.disableExceptionTracking) {
+        f = "onerror", b("_" + f);
+        var g = e[f];
+        e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i }
       }
-      var t = { config: cfg }, r = document, u = window, f = "script", e = [], o = function () {
-        var e = r.createElement(f);
-        e.src = "https://js.monitor.azure.com/scripts/b/ai.2.min.js";
-        r.getElementsByTagName(f)[0].parentNode.appendChild(e)
-      };
-      cfg.name = "appInsights";
-      cfg.queue = e;
-      cfg.version = 2;
-      n("trackEvent");
-      n("trackException");
-      n("trackPageView");
-      n("trackTrace");
-      n("trackDependencyData");
-      n("startTrackPage");
-      n("stopTrackPage");
-      o();
-      var s = u.appInsights || t;
-      u.appInsights = s;
-      s.trackPageView();
-    })({
+      return c
+    }({
       connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=f237551e-fca5-4ce3-ae0a-7c00eb184042"
     });
+    window.appInsights = appInsights;
+    appInsights.trackPageView();
   </script>
 
 </head>
