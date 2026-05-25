@@ -28,28 +28,45 @@
 
   <!-- Azure Application Insights -->
   <script type="text/javascript">
-    var appInsights = window.appInsights || function (a) {
-      function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } }
-      var c = { config: a }, d = document, e = window;
-      setTimeout(function () {
-        var b = d.createElement("script");
-        b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";
-        d.getElementsByTagName("script")[0].parentNode.appendChild(b)
-      });
-      try { c.cookie = d.cookie } catch (a) { }
-      c.queue = [];
-      for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop());
-      if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackPage"), b("stopTrackPage"), b("startTrackEvent"), b("stopTrackEvent"), !a.disableExceptionTracking) {
-        f = "onerror", b("_" + f);
-        var g = e[f];
-        e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i }
+    !(function (cfg) {
+      var d = document, w = window, i = "appInsightsSDK", r = cfg.name || "appInsights";
+      w[i] = r;
+      var n = w[r] = w[r] || [];
+      n.queue = n.queue || [];
+      n.version = n.version || "2.0";
+      var s = d.createElement("script");
+      s.src = "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js";
+      s.crossOrigin = "anonymous";
+      s.onload = function () {
+        var e = w[r];
+        e.initialize && e.initialize(cfg);
+      };
+      (d.head || d.body).appendChild(s);
+      var t = n.methods = [
+        "trackEvent", "trackPageView", "trackException", "trackTrace",
+        "trackDependencyData", "trackMetric", "trackPageViewPerformance",
+        "startTrackPage", "stopTrackPage", "startTrackEvent", "stopTrackEvent",
+        "addTelemetryInitializer", "setAuthenticatedUserContext",
+        "clearAuthenticatedUserContext", "flush"
+      ];
+      n.load = function (e) {
+        var i = function (e) {
+          n[e] = function () {
+            var t = arguments;
+            n.queue.push(function () { n[e].apply(n, t) });
+          };
+        };
+        for (var t = 0; t < n.methods.length; t++) i(n.methods[t]);
+      };
+      n.load();
+    })({
+      src: "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js",
+      name: "appInsights",
+      config: {
+        connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=f237551e-fca5-4ce3-ae0a-7c00eb184042"
       }
-      return c
-    }({
-      connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=f237551e-fca5-4ce3-ae0a-7c00eb184042"
     });
-    window.appInsights = appInsights;
-    appInsights.trackPageView();
+    window.appInsights.trackPageView();
   </script>
 
 </head>
