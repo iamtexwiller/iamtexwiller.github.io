@@ -73,6 +73,7 @@ Toda a infraestrutura foi montada utilizando serviços gratuitos, com o domínio
 | **GitHub** | Versionamento do código e gatilho do pipeline de deploy |
 | **GitHub Actions** | CI/CD — executa o deploy automaticamente a cada push |
 | **Azure Static Web Apps (Free)** | Hospedagem do site com SSL e CDN global |
+| **Azure Application Insights (Free)** | Monitoramento de performance, visitas, dispositivos e comportamento dos usuários em tempo real |
 | **Registro.br** | Registro e gerenciamento do domínio `texwiller.com.br` |
 
 ### Como o deploy funciona
@@ -109,16 +110,46 @@ O domínio `texwiller.com.br` está registrado no **Registro.br**, que também g
 
 O certificado SSL (HTTPS) é provisionado e renovado automaticamente pela Azure, sem nenhuma configuração adicional.
 
+### Monitoramento com Application Insights
+
+O site utiliza o **Azure Application Insights SDK v3** para monitoramento em tempo real. A implementação carrega o SDK diretamente via CDN da Microsoft e inicializa a instância após o carregamento completo:
+
+```html
+<script src="https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  var appInsights = new Microsoft.ApplicationInsights.ApplicationInsights({
+    config: {
+      connectionString: "..."
+    }
+  });
+  appInsights.loadAppInsights();
+  appInsights.trackPageView();
+</script>
+```
+
+Essa abordagem garante que o SDK esteja completamente carregado antes da instância ser criada, evitando race conditions. Os dados coletados incluem:
+
+- 📊 Page views e tempo de sessão
+- 📱 Dispositivos e browsers utilizados
+- 🌍 Localização geográfica dos visitantes
+- ⚡ Performance de carregamento
+- ❌ Erros e exceções JavaScript
+
 ### Organização dos recursos na Azure
 
 ```
 Subscription : SB-TEXWILLER
     └── Resource Group : RG-TEXWILLER-SITE
-            └── Static Web App : texwiller-site
-                    ├── Plano     : Free
+            ├── Static Web App : texwiller-site
+            │       ├── Plano     : Free
+            │       ├── Região    : East US 2
+            │       ├── Domínio   : www.texwiller.com.br
+            │       └── CI/CD     : GitHub Actions
+            │
+            └── Application Insights : appi-texwiller-site
+                    ├── Plano     : Free (5GB/mês)
                     ├── Região    : East US 2
-                    ├── Domínio   : www.texwiller.com.br
-                    └── CI/CD     : GitHub Actions
+                    └── SDK       : ai.3.gbl.min.js
 ```
 
 ---
