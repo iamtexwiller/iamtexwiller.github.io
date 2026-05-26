@@ -66,6 +66,38 @@ iamtexwiller.github.io/
 
 Toda a infraestrutura foi montada do zero, com foco em boas práticas de Cloud, observabilidade e alertas — o mesmo stack utilizado em ambientes corporativos de missão crítica.
 
+```mermaid
+flowchart TD
+    DEV["💻 VSCode — Mac\nHTML · CSS · JS"]
+    GH["🐙 GitHub\niamtexwiller.github.io · branch main"]
+    GA["⚙️ GitHub Actions\nCI/CD automático"]
+
+    subgraph AZURE["☁️ Azure · RG-TEXWILLER-SITE"]
+        SWA["📦 Static Web Apps\nFree · East US 2 · SSL"]
+        AI["📊 Application Insights\nSDK v3 · monitoramento em tempo real"]
+        AVT["🔔 Availability Test\nPing a cada 5 min · multi-região"]
+        ALT["🚨 Alert Rule\nE-mail se disponibilidade < 100%"]
+        SWA --> AI
+        SWA --> AVT
+        AI --> ALT
+        AVT --> ALT
+    end
+
+    subgraph OBS["👁️ Observabilidade"]
+        AR["🔑 App Registration\ngrafana-texwiller"]
+        GF["📈 Grafana Cloud\ntexwiller.grafana.net"]
+        AR --> GF
+    end
+
+    DNS["🌐 Registro.br · DNS\nA record · CNAME · texwiller.com.br"]
+
+    DEV -->|git push| GH
+    GH -->|trigger automático| GA
+    GA -->|deploy| SWA
+    AI --> AR
+    DNS -.->|aponta para| SWA
+```
+
 ### Serviços utilizados
 
 | Serviço | Função | Custo |
