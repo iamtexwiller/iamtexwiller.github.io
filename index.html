@@ -27,26 +27,21 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Azure Application Insights -->
+  <script src="https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript">
-    !function (T, l, y) {
-      var t = y.name || "appInsights";
-      var n = T[t] = T[t] || function (config) {
-        n.queue = n.queue || [];
-        n.queue.push(function () { n.initialize(config) });
-        return n;
-      }({
+    // Cria a instância
+    var appInsights = new Microsoft.ApplicationInsights.ApplicationInsights({
+      config: {
         connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=f237551e-fca5-4ce3-ae0a-7c00eb184042"
-      });
-      var o = document.createElement("script");
-      o.src = "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js";
-      o.crossOrigin = "anonymous";
-      document.head.appendChild(o);
-    }(window, document, { name: "appInsights" });
+      }
+    });
 
-    // Essa chamada vai para a fila e será executada quando o SDK estiver pronto
+    // Inicializa
+    appInsights.loadAppInsights();
+
+    // Agora você pode chamar normalmente
     appInsights.trackPageView();
   </script>
-
 
 </head>
 
