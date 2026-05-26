@@ -265,3 +265,4 @@ As imagens das certificações são carregadas a partir da pasta `assets/`, com 
 ## 📄 Licença
 
 Projeto open source. Sinta-se à vontade para usar a estrutura como base para o seu próprio portfólio — basta substituir o conteúdo.
+
