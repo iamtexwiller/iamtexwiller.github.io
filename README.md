@@ -2,13 +2,13 @@
 
 Este repositório contém o código do meu site pessoal de portfólio e currículo online, disponível em **[www.texwiller.com.br](https://www.texwiller.com.br)**.
 
-O projeto foi construído do zero — do design ao deploy — sem frameworks, sem dependências e sem custos de hospedagem.
+O projeto foi construído do zero — do design ao deploy — sem frameworks, sem dependências e com infraestrutura profissional de monitoramento e observabilidade.
 
 ---
 
 ## 🎯 Objetivo
 
-Criar uma presença digital profissional que refletisse minha trajetória em Cloud & Infraestrutura, de forma visualmente impactante e tecnicamente coerente com o meu perfil. Em vez de usar plataformas prontas como LinkedIn ou Notion, optei por construir e hospedar tudo eu mesmo — o que por si só já diz bastante sobre como trabalho.
+Criar uma presença digital profissional que refletisse minha trajetória em Cloud & Infraestrutura, de forma visualmente impactante e tecnicamente coerente com o meu perfil. Em vez de usar plataformas prontas como LinkedIn ou Notion, optei por construir e hospedar tudo eu mesmo — montando uma infraestrutura real com CI/CD, monitoramento, alertas e observabilidade.
 
 ---
 
@@ -64,17 +64,20 @@ iamtexwiller.github.io/
 
 ## ☁️ Como o site está hospedado
 
-Toda a infraestrutura foi montada utilizando serviços gratuitos, com o domínio próprio `texwiller.com.br`.
+Toda a infraestrutura foi montada do zero, com foco em boas práticas de Cloud, observabilidade e alertas — o mesmo stack utilizado em ambientes corporativos de missão crítica.
 
 ### Serviços utilizados
 
-| Serviço | Função |
-|---|---|
-| **GitHub** | Versionamento do código e gatilho do pipeline de deploy |
-| **GitHub Actions** | CI/CD — executa o deploy automaticamente a cada push |
-| **Azure Static Web Apps (Free)** | Hospedagem do site com SSL e CDN global |
-| **Azure Application Insights (Free)** | Monitoramento de performance, visitas, dispositivos e comportamento dos usuários em tempo real |
-| **Registro.br** | Registro e gerenciamento do domínio `texwiller.com.br` |
+| Serviço | Função | Custo |
+|---|---|---|
+| **GitHub** | Versionamento do código e gatilho do pipeline de deploy | Gratuito |
+| **GitHub Actions** | CI/CD — executa o deploy automaticamente a cada push | Gratuito |
+| **Azure Static Web Apps** | Hospedagem do site com SSL e CDN global | Gratuito (Free tier) |
+| **Azure Application Insights** | Monitoramento de performance, visitas e comportamento em tempo real | Gratuito (até 5GB/mês) |
+| **Azure Monitor — Availability Test** | Ping automático a cada 5 minutos para verificar disponibilidade | Gratuito |
+| **Azure Monitor — Alert Rule** | Alerta por e-mail se a disponibilidade cair abaixo de 100% | $0.10 USD/mês |
+| **Grafana Cloud** | Dashboard de observabilidade conectado ao Azure Monitor | Gratuito (Free tier) |
+| **Registro.br** | Registro e gerenciamento do domínio `texwiller.com.br` | ~R$ 40/ano |
 
 ### Como o deploy funciona
 
@@ -135,6 +138,44 @@ Essa abordagem garante que o SDK esteja completamente carregado antes da instân
 - ⚡ Performance de carregamento
 - ❌ Erros e exceções JavaScript
 
+### Disponibilidade e alertas
+
+O **Azure Monitor Availability Test** realiza pings automáticos a cada **5 minutos** a partir de múltiplas regiões do mundo, verificando se o site está respondendo corretamente.
+
+Caso a disponibilidade caia abaixo de **100%**, um **Alert Rule** dispara automaticamente um e-mail de notificação — garantindo visibilidade imediata sobre qualquer incidente.
+
+```
+Azure Monitor
+    │
+    │  Ping a cada 5 minutos (múltiplas regiões)
+    ▼
+www.texwiller.com.br
+    │
+    │  Disponibilidade < 100%?
+    ▼
+Alert Rule → E-mail de notificação imediata
+```
+
+### Observabilidade com Grafana
+
+Os dados do Application Insights são visualizados em tempo real em um **Dashboard Grafana** hospedado no Grafana Cloud, conectado ao Azure Monitor via App Registration:
+
+🔗 [texwiller.grafana.net](https://texwiller.grafana.net)
+
+A integração foi configurada via **Azure App Registration** com as seguintes roles atribuídas:
+
+| Role | Escopo | Finalidade |
+|---|---|---|
+| `Monitoring Reader` | Subscription | Leitura de métricas do Azure Monitor |
+| `Log Analytics Reader` | Subscription | Leitura de logs do Log Analytics |
+
+O dashboard exibe em tempo real:
+- Usuários ativos e sessões
+- Page views
+- Taxa de falhas
+- Tempo de resposta do servidor
+- Disponibilidade por região
+
 ### Organização dos recursos na Azure
 
 ```
@@ -147,9 +188,17 @@ Subscription : SB-TEXWILLER
             │       └── CI/CD     : GitHub Actions
             │
             └── Application Insights : appi-texwiller-site
-                    ├── Plano     : Free (5GB/mês)
-                    ├── Região    : East US 2
-                    └── SDK       : ai.3.gbl.min.js
+                    ├── Plano              : Free (5GB/mês)
+                    ├── Região             : East US 2
+                    ├── SDK                : ai.3.gbl.min.js
+                    ├── Availability Test  : ping a cada 5 min
+                    └── Alert Rule         : e-mail se disponibilidade < 100%
+
+Grafana Cloud : texwiller.grafana.net
+    └── Data Source : Azure Monitor
+            ├── App Registration : grafana-texwiller
+            ├── Roles            : Monitoring Reader + Log Analytics Reader
+            └── Dashboard        : texwiller-site-overview
 ```
 
 ---
@@ -164,6 +213,20 @@ As imagens das certificações são carregadas a partir da pasta `assets/`, com 
 | AWS CCP, LPIC-1, VCTA-DCV, ITIL 4, Red Hat, Oracle OCI | Credly |
 | GitHub Foundations | GitHub |
 | CQPs FIAP | FIAP |
+
+---
+
+## 💰 Custo total da infraestrutura
+
+| Item | Custo |
+|---|---|
+| Hospedagem (Azure Static Web Apps) | R$ 0,00/mês |
+| Monitoramento (Application Insights) | R$ 0,00/mês |
+| Availability Test | R$ 0,00/mês |
+| Alert Rule | ~R$ 0,60/mês ($0.10 USD) |
+| Grafana Cloud | R$ 0,00/mês |
+| Domínio `texwiller.com.br` | ~R$ 3,33/mês (R$ 40/ano) |
+| **Total** | **~R$ 3,93/mês** |
 
 ---
 
