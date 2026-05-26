@@ -28,14 +28,25 @@
 
   <!-- Azure Application Insights -->
   <script type="text/javascript">
-  !function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:function(){g=!0},queue:[],version:2,config:d};function h(e,t){m[e]=function(){var i=arguments;m.queue.push(function(){m[e].apply(m,i)})}}var a=["trackEvent","trackPageView","trackException","trackTrace","trackDependencyData","trackMetric","trackPageViewPerformance","startTrackPage","stopTrackPage","startTrackEvent","stopTrackEvent","addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"];while(a.length)h(a.pop());if(!d[I]){var i="onerror";h("_"+i);var r=T[i];T[i]=function(e,t,n,a,o){var s=r&&r(e,t,n,a,o);s!==!0&&m["_onerror"](e,t,n,a,o);return s}}return m};n.queue=n.queue||[],n.version=2;var o=document.createElement(k);o.src="https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js",o[w]="anonymous",document.head.appendChild(o);T[t]=n}(
-    window,document,{
-      connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/"
-    }
-  );
+    !function (T, l, y) {
+      var t = y.name || "appInsights";
+      var n = T[t] = T[t] || function (config) {
+        n.queue = n.queue || [];
+        n.queue.push(function () { n.initialize(config) });
+        return n;
+      }({
+        connectionString: "InstrumentationKey=SEU_KEY_AQUI;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/"
+      });
+      var o = document.createElement("script");
+      o.src = "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js";
+      o.crossOrigin = "anonymous";
+      document.head.appendChild(o);
+    }(window, document, { name: "appInsights" });
 
-  appInsights.trackPageView();
-</script>
+    // Essa chamada vai para a fila e será executada quando o SDK estiver pronto
+    appInsights.trackPageView();
+  </script>
+
 
 
 
