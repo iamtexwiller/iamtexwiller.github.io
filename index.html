@@ -28,46 +28,21 @@
 
   <!-- Azure Application Insights -->
   <script type="text/javascript">
-    !(function (cfg) {
-      var d = document, w = window, i = "appInsightsSDK", r = cfg.name || "appInsights";
-      w[i] = r;
-      var n = w[r] = w[r] || [];
-      n.queue = n.queue || [];
-      n.version = n.version || "2.0";
-      var s = d.createElement("script");
-      s.src = "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js";
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        var e = w[r];
-        e.initialize && e.initialize(cfg);
-      };
-      (d.head || d.body).appendChild(s);
-      var t = n.methods = [
-        "trackEvent", "trackPageView", "trackException", "trackTrace",
-        "trackDependencyData", "trackMetric", "trackPageViewPerformance",
-        "startTrackPage", "stopTrackPage", "startTrackEvent", "stopTrackEvent",
-        "addTelemetryInitializer", "setAuthenticatedUserContext",
-        "clearAuthenticatedUserContext", "flush"
-      ];
-      n.load = function (e) {
-        var i = function (e) {
-          n[e] = function () {
-            var t = arguments;
-            n.queue.push(function () { n[e].apply(n, t) });
-          };
-        };
-        for (var t = 0; t < n.methods.length; t++) i(n.methods[t]);
-      };
-      n.load();
-    })({
-      src: "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js",
-      name: "appInsights",
-      config: {
-        connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=f237551e-fca5-4ce3-ae0a-7c00eb184042"
-      }
-    });
-    window.appInsights.trackPageView();
-  </script>
+  var appInsights = window.appInsights || function (config) {
+    function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
+    var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f;
+    s.src = "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js";
+    u.getElementsByTagName("head")[0].appendChild(s);
+    t.queue = [];
+    for (i = ["trackEvent","trackPageView","trackException","trackTrace","trackMetric"]; i.length;) r(i.pop());
+    return t;
+  }({
+    connectionString: "InstrumentationKey=e2f0a2b5-9ad6-44d7-8299-5c9f4bf76ae7;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/"
+  });
+  window.appInsights = appInsights;
+  appInsights.trackPageView();
+</script>
+
 
 </head>
 
