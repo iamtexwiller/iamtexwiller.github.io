@@ -232,7 +232,7 @@ Isso permite correlacionar visualmente o impacto de cada mudança nas métricas 
 
 ### Dashboard — preview
 
-![Grafana Dashboard](../assets/grafana-dashboard.png)
+![Grafana Dashboard](assets/grafana-dashboard.png)
 
 ### Organização dos recursos na Azure
 
