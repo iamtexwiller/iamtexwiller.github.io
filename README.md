@@ -232,7 +232,7 @@ Isso permite correlacionar visualmente o impacto de cada mudança nas métricas 
 
 ### Dashboard — preview
 
-> 📸 Substitua esta linha pela screenshot do dashboard: `![Grafana Dashboard](assets/grafana-dashboard.png)`
+![Grafana Dashboard](../assets/grafana-dashboard.png)
 
 ### Organização dos recursos na Azure
 
