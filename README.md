@@ -202,11 +202,37 @@ A integração foi configurada via **Azure App Registration** com as seguintes r
 | `Log Analytics Reader` | Subscription | Leitura de logs do Log Analytics |
 
 O dashboard exibe em tempo real:
-- Usuários ativos e sessões
-- Page views
-- Taxa de falhas
+- Usuários ativos e sessões únicas
+- Page views por período
+- Taxa de falhas (failed requests)
 - Tempo de resposta do servidor
-- Disponibilidade por região
+- Disponibilidade por região (Availability Test)
+- **Anotações de deploy** — linhas verticais marcando cada deploy automaticamente via GitHub Actions
+
+### Anotações de deploy no Grafana
+
+Cada vez que um deploy é realizado, o **GitHub Actions** envia automaticamente uma anotação para o Grafana via API, marcando o exato momento do deploy em todos os gráficos do dashboard.
+
+Isso permite correlacionar visualmente o impacto de cada mudança nas métricas do site — exatamente como é feito em ambientes de produção corporativos.
+
+```yaml
+- name: Annotate deploy on Grafana
+  if: success()
+  run: |
+    curl -s -X POST https://texwiller.grafana.net/api/annotations \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer ${{ secrets.GRAFANA_TOKEN }}" \
+      -d '{
+        "dashboardUID": "tevf57m",
+        "time": '"$(date +%s%3N)"',
+        "tags": ["deploy", "github-actions"],
+        "text": "🚀 Deploy — commit: ${{ github.sha }}"
+      }'
+```
+
+### Dashboard — preview
+
+> 📸 Substitua esta linha pela screenshot do dashboard: `![Grafana Dashboard](assets/grafana-dashboard.png)`
 
 ### Organização dos recursos na Azure
 
@@ -265,4 +291,3 @@ As imagens das certificações são carregadas a partir da pasta `assets/`, com 
 ## 📄 Licença
 
 Projeto open source. Sinta-se à vontade para usar a estrutura como base para o seu próprio portfólio — basta substituir o conteúdo.
-
