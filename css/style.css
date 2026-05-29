@@ -427,3 +427,19 @@ footer {
   align-self: flex-start;
   margin-bottom: 0.5rem;
 }
+
+/* ─── PROFILE PHOTO ─── */
+.hero-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid var(--lime);
+  filter: grayscale(20%);
+  transition: filter 0.3s;
+}
+
+.hero-photo:hover {
+  filter: grayscale(0%);
+}
