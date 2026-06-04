@@ -60,38 +60,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ─── TYPING ANIMATION ─── */
-  const heroName = document.querySelector('.hero-name');
-
-  if (heroName) {
-    const lines = ['TEX', 'WILLER'];
-    const classes = ['', ' class="accent"'];
-    let html = '';
-
-    heroName.innerHTML = '';
-
-    async function typeLine(text, lineIndex) {
-      const span = document.createElement('span');
-      if (lineIndex === 1) span.className = 'accent';
-      heroName.appendChild(span);
-      if (lineIndex > 0) heroName.appendChild(document.createTextNode('\n'));
-
-      for (let i = 0; i <= text.length; i++) {
-        span.textContent = text.slice(0, i);
-        await new Promise(r => setTimeout(r, 80));
-      }
-    }
-
-    async function typeAll() {
-      // Pequeno delay antes de começar
-      await new Promise(r => setTimeout(r, 400));
-      for (let i = 0; i < lines.length; i++) {
-        await typeLine(lines[i], i);
-        await new Promise(r => setTimeout(r, 200));
-      }
-    }
-
-    typeAll();
-  }
-
 });
