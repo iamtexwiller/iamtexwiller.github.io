@@ -684,16 +684,33 @@
 
       <article class="project-card">
         <span class="project-tag">Infraestrutura · Azure</span>
-        <h3>TradeFoundry</h3>
+        <h3>TradeFoundry (Fase Azure)</h3>
         <p>
-          Infraestrutura Azure inspirada em ambientes financeiros reais — AKS Privado,
-          Azure Bastion, Application Gateway e monitoramento centralizado.
+          Infraestrutura Azure inspirada em ambientes financeiros reais — AKS Privado, Azure Bastion, Application Gateway e monitoramento centralizado.
         </p>
         <ul class="project-bullets">
           <li>Arquitetura segura com VNet Peering, NSGs e Private DNS Zone</li>
           <li>Log Analytics e Application Insights integrados</li>
           <li>Administração e troubleshooting de Kubernetes e redes</li>
           <li>Documentação completa de arquitetura e decisões técnicas</li>
+        </ul>
+        <a href="https://github.com/iamtexwiller/TradeFoundry/tree/fase-1-azure" target="_blank" rel="noopener noreferrer"
+          class="project-link">Ver repositório ↗</a>
+      </article>
+
+      <article class="project-card">
+        <span class="project-tag">Infraestrutura · Kubernetes / GitOps</span>
+        <h3>TradeFoundry (Fase Local)</h3>
+        <p>
+          Reconstrução completa da infraestrutura do TradeFoundry para ambiente 
+          100% local e custo zero — Minikube, observabilidade real no Grafana Cloud 
+          e exposição pública via Cloudflare Tunnel com TLS válido.
+        </p>
+        <ul class="project-bullets">
+          <li>3 ambientes isolados (dev/cert/prod) via Terraform, com ResourceQuota por ambiente</li>
+          <li>bservabilidade real: Prometheus + remote_write para Grafana Cloud, dashboard e alertas como código</li>
+          <li>Exposição pública real via domínio próprio (tradefoundry.dev.br), TLS via cert-manager + Let's Encrypt (DNS-01)</li>
+          <li>CI/CD no GitHub Actions validando todo o código Terraform a cada push</li>
         </ul>
         <a href="https://github.com/iamtexwiller/TradeFoundry" target="_blank" rel="noopener noreferrer"
           class="project-link">Ver repositório ↗</a>
