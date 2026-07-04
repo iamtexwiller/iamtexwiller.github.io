@@ -699,18 +699,19 @@
       </article>
 
       <article class="project-card">
-        <span class="project-tag">Infraestrutura · Kubernetes / GitOps</span>
+        <span class="project-tag">Infraestrutura · Kubernetes / GitOps / Automação</span>
         <h3>TradeFoundry (Fase Local)</h3>
         <p>
-          Reconstrução completa da infraestrutura do TradeFoundry para ambiente 
-          100% local e custo zero — Minikube, observabilidade real no Grafana Cloud 
-          e exposição pública via Cloudflare Tunnel com TLS válido.
+          Infraestrutura 100% local e custo zero com API real de mercado financeiro — Minikube, 
+          API FastAPI com cotações reais da B3, automação de dados via n8n, observabilidade completa 
+          no Grafana Cloud e exposição pública com TLS válido.
         </p>
         <ul class="project-bullets">
-          <li>3 ambientes isolados (dev/cert/prod) via Terraform, com ResourceQuota por ambiente</li>
-          <li>bservabilidade real: Prometheus + remote_write para Grafana Cloud, dashboard e alertas como código</li>
-          <li>Exposição pública real via domínio próprio (tradefoundry.dev.br), TLS via cert-manager + Let's Encrypt (DNS-01)</li>
-          <li>CI/CD no GitHub Actions validando todo o código Terraform a cada push</li>
+          <li>API FastAPI com cotações reais da B3 via n8n + Redis, com fallback gracioso</li>
+          <li>n8n como plataforma de automação: workflow orquestrando dados externos com PostgreSQL e Redis</li>
+          <li>Observabilidade em 3 camadas: métricas de infra (Prometheus), de aplicação (métricas customizadas via PodMonitor) e externa (Synthetic Monitoring)</li>
+          <li>Exposição pública real em 4 subdomínios (dev/cert/prod + n8n), TLS via cert-manager + Let's Encrypt (DNS-01)</li>
+          <li>CI/CD com 3 workflows GitHub Actions: validação Terraform, build multi-arquitetura (amd64/arm64), smoke test pós-deploy</li>
         </ul>
         <a href="https://github.com/iamtexwiller/TradeFoundry" target="_blank" rel="noopener noreferrer"
           class="project-link">Ver repositório ↗</a>
