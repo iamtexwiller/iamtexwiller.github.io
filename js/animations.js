@@ -169,4 +169,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ─── TERMINAL DECODE EFFECT (.section-heading) ───
+     On scroll-in, each heading's letters flicker through random characters
+     before resolving into the real text — like a terminal decoding a log line. */
+  const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+=-_/\\';
+
+  function scrambleReveal(el, duration = 0.9) {
+    const original = el.innerHTML;
+    const lines = original.split(/<br\s*\/?>/i);
+    const state = { progress: 0 };
+
+    gsap.to(state, {
+      progress: 1,
+      duration,
+      ease: 'none',
+      onUpdate: () => {
+        const p = state.progress;
+        const scrambled = lines.map(line => {
+          const len = line.length;
+          return line.split('').map((ch, i) => {
+            if (ch === ' ' || ch.trim() === '') return ch;
+            const charThreshold = len <= 1 ? 0 : i / (len - 1);
+            if (p >= charThreshold) return ch;
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          }).join('');
+        });
+        el.innerHTML = scrambled.join('<br>');
+      },
+      onComplete: () => {
+        el.innerHTML = original; // guarantees the exact final markup, no leftover artifacts
+      }
+    });
+  }
+
+  document.querySelectorAll('.section-heading').forEach(heading => {
+    ScrollTrigger.create({
+      trigger: heading,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => scrambleReveal(heading)
+    });
+  });
+
 });
