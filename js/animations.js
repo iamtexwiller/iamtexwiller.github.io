@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ─── CARD TILT (cert-card & project-card) ───
      Subtle 3D tilt that follows the cursor, only on devices with a
      precise pointer (desktop mouse) — skipped on touch to avoid weirdness. */
-  const supportsHoverTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const tiltCards = document.querySelectorAll('.cert-card, .project-card');
 
-  if (supportsHoverTilt && tiltCards.length) {
+  if (supportsFinePointer && tiltCards.length) {
     const MAX_TILT = 5; // degrees — kept subtle so text stays readable
 
     tiltCards.forEach(card => {
@@ -138,6 +138,33 @@ document.addEventListener('DOMContentLoaded', () => {
         quickRotX(0);
         quickLift(0);
         card.style.zIndex = '';
+      });
+    });
+  }
+
+  /* ─── MAGNETIC BUTTONS (.btn-main & .btn-line) ───
+     The element "pulls" toward the cursor within its own bounds,
+     and springs back on mouseleave. Desktop-only, same guard as the tilt. */
+  const magneticEls = document.querySelectorAll('.btn-main, .btn-line');
+
+  if (supportsFinePointer && magneticEls.length) {
+    const MAGNET_STRENGTH = 0.35; // fraction of cursor offset the element travels
+
+    magneticEls.forEach(el => {
+      const quickX = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' });
+      const quickY = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' });
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        quickX(relX * MAGNET_STRENGTH);
+        quickY(relY * MAGNET_STRENGTH);
+      });
+
+      el.addEventListener('mouseleave', () => {
+        quickX(0);
+        quickY(0);
       });
     });
   }
