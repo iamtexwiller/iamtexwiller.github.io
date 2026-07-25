@@ -349,7 +349,7 @@ nav {
 #certs { padding: 5rem 3rem; border-top: 1px solid var(--border); }
 .certs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
 .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-.cert-card { background: var(--black); padding: 2rem; display: flex; flex-direction: column; gap: 0.5rem; transition: background 0.25s; }
+.cert-card { background: var(--black); padding: 2rem; display: flex; flex-direction: column; gap: 0.5rem; transition: background 0.25s; position: relative; }
 .cert-card:hover { background: var(--gray); }
 .cert-img { width: 90px; height: 90px; object-fit: contain; margin-bottom: 1rem; filter: drop-shadow(0 0 12px rgba(200, 255, 0, 0.15)); transition: filter 0.3s, transform 0.3s; }
 .cert-card:hover .cert-img { filter: drop-shadow(0 0 20px rgba(200, 255, 0, 0.4)); transform: scale(1.05); }
@@ -465,6 +465,7 @@ footer {
   border-radius: 8px;
   padding: 28px;
   transition: border-color 0.3s;
+  position: relative;
 }
 
 .project-card:hover {

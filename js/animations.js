@@ -107,4 +107,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ─── CARD TILT (cert-card & project-card) ───
+     Subtle 3D tilt that follows the cursor, only on devices with a
+     precise pointer (desktop mouse) — skipped on touch to avoid weirdness. */
+  const supportsHoverTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const tiltCards = document.querySelectorAll('.cert-card, .project-card');
+
+  if (supportsHoverTilt && tiltCards.length) {
+    const MAX_TILT = 5; // degrees — kept subtle so text stays readable
+
+    tiltCards.forEach(card => {
+      gsap.set(card, { transformPerspective: 700, transformStyle: 'preserve-3d' });
+
+      const quickRotY = gsap.quickTo(card, 'rotationY', { duration: 0.5, ease: 'power3.out' });
+      const quickRotX = gsap.quickTo(card, 'rotationX', { duration: 0.5, ease: 'power3.out' });
+      const quickLift = gsap.quickTo(card, 'z', { duration: 0.5, ease: 'power3.out' });
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const relX = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 → 0.5
+        const relY = (e.clientY - rect.top) / rect.height - 0.5;
+        quickRotY(relX * MAX_TILT * 2);
+        quickRotX(-relY * MAX_TILT * 2);
+        quickLift(12);
+        card.style.zIndex = '5';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        quickRotY(0);
+        quickRotX(0);
+        quickLift(0);
+        card.style.zIndex = '';
+      });
+    });
+  }
+
 });
