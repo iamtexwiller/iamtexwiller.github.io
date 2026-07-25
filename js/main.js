@@ -19,18 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
   });
 
-  /* ─── SCROLL REVEAL ─── */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 60);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  /* ─── SCROLL REVEAL ───
+     Handled by GSAP + ScrollTrigger now — see js/animations.js */
 
   /* ─── ACTIVE NAV LINK ON SCROLL ─── */
   const sections = document.querySelectorAll('section, div[id]');
