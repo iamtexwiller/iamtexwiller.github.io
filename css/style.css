@@ -1,5 +1,5 @@
 /* =============================================
-   TEX WILLER â€” Portfolio Site
+   TEX WILLER — Portfolio Site
    style.css
    ============================================= */
 
@@ -28,7 +28,7 @@ body {
   cursor: crosshair;
 }
 
-/* â”€â”€â”€ CURSOR â”€â”€â”€ */
+/* ─── CURSOR ─── */
 .cursor {
   position: fixed;
   width: 10px;
@@ -41,12 +41,12 @@ body {
   mix-blend-mode: difference;
 }
 
-/* â”€â”€â”€ SCROLLBAR â”€â”€â”€ */
+/* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--black); }
 ::-webkit-scrollbar-thumb { background: var(--gray2); }
 
-/* â”€â”€â”€ ANIMATIONS â”€â”€â”€ */
+/* ─── ANIMATIONS ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -60,7 +60,7 @@ body {
 .reveal {
   /* Initial hidden state as a no-JS fallback; GSAP (js/animations.js)
      takes over the actual animation via ScrollTrigger, so no CSS
-     transition here â€” it would fight with the GSAP tween. */
+     transition here — it would fight with the GSAP tween. */
   opacity: 0;
   transform: translateY(24px);
 }
@@ -69,7 +69,7 @@ body {
   transform: translateY(0);
 }
 
-/* â”€â”€â”€ SHARED COMPONENTS â”€â”€â”€ */
+/* ─── SHARED COMPONENTS ─── */
 .label {
   font-size: 9px;
   letter-spacing: 0.25em;
@@ -124,7 +124,7 @@ body {
 }
 .btn-line:hover { color: var(--white); }
 
-/* â”€â”€â”€ NAV â”€â”€â”€ */
+/* ─── NAV ─── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -154,7 +154,7 @@ nav {
 }
 .nav-links a:hover { opacity: 1; }
 
-/* â”€â”€â”€ HERO â”€â”€â”€ */
+/* ─── HERO ─── */
 #hero {
   min-height: 100vh;
   display: grid;
@@ -228,7 +228,7 @@ nav {
 .stat-label { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
 .hero-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; }
 
-/* â”€â”€â”€ TICKER â”€â”€â”€ */
+/* ─── TICKER ─── */
 .ticker {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -250,7 +250,7 @@ nav {
 }
 .ticker-item .dot { width: 4px; height: 4px; background: var(--lime); border-radius: 50%; flex-shrink: 0; }
 
-/* â”€â”€â”€ ABOUT â”€â”€â”€ */
+/* ─── ABOUT ─── */
 #about { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
 .about-left { padding: 5rem 3rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: space-between; }
 .about-right { padding: 5rem 3rem; display: flex; flex-direction: column; justify-content: center; }
@@ -263,7 +263,7 @@ nav {
 .meta-v { font-size: 12px; color: rgba(240, 237, 230, 0.75); }
 .meta-v--highlight { color: var(--lime); }
 
-/* â”€â”€â”€ SKILLS â”€â”€â”€ */
+/* ─── SKILLS ─── */
 #skills { padding: 5rem 3rem; border-top: 1px solid var(--border); }
 .skills-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
 
@@ -308,7 +308,7 @@ nav {
   transition: color 0.25s, border-color 0.25s;
 }
 
-/* â”€â”€â”€ EXPERIENCE â”€â”€â”€ */
+/* ─── EXPERIENCE ─── */
 #experience { padding: 5rem 3rem; border-top: 1px solid var(--border); }
 .exp-header { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 2rem; margin-bottom: 4rem; }
 .exp-count { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--muted); padding-bottom: 0.5rem; }
@@ -351,7 +351,7 @@ nav {
 .exp-company { font-size: 10px; color: var(--lime); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.5rem; }
 .exp-desc { font-size: 11.5px; color: var(--muted); line-height: 1.9; }
 
-/* â”€â”€â”€ AWARD â”€â”€â”€ */
+/* ─── AWARD ─── */
 .award-bar { margin-top: 4rem; background: var(--lime); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; color: var(--black); }
 .award-left { display: flex; align-items: center; gap: 1.5rem; }
 .award-icon { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; }
@@ -359,7 +359,7 @@ nav {
 .award-sub { font-size: 10px; letter-spacing: 0.12em; opacity: 0.6; margin-top: 0.3rem; }
 .award-badge { border: 2px solid var(--black); padding: 0.5rem 1.2rem; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; white-space: nowrap; }
 
-/* â”€â”€â”€ EDUCATION â”€â”€â”€ */
+/* ─── EDUCATION ─── */
 #education { padding: 5rem 3rem; border-top: 1px solid var(--border); }
 .edu-header { display: grid; grid-template-columns: auto 1fr; align-items: end; gap: 2rem; margin-bottom: 4rem; }
 .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
@@ -370,12 +370,23 @@ nav {
 .edu-course { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-top: 0.3rem; }
 .edu-desc { font-size: 11px; color: var(--muted); line-height: 1.8; }
 
-/* â”€â”€â”€ CERTIFICATIONS â”€â”€â”€ */
+/* ─── CERTIFICATIONS ─── */
 #certs { padding: 5rem 3rem; border-top: 1px solid var(--border); }
 .certs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
-.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-.cert-card { background: var(--black); padding: 2rem; display: flex; flex-direction: column; gap: 0.5rem; transition: background 0.25s; position: relative; }
-.cert-card:hover { background: var(--gray); }
+.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+.cert-card {
+  background: var(--black);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 0.25s, box-shadow 0.25s;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.cert-card:hover { background: var(--gray); box-shadow: inset 0 0 0 1px rgba(200, 255, 0, 0.3); }
 .cert-img { width: 90px; height: 90px; object-fit: contain; margin-bottom: 1rem; filter: drop-shadow(0 0 12px rgba(200, 255, 0, 0.15)); transition: filter 0.3s, transform 0.3s; }
 .cert-card:hover .cert-img { filter: drop-shadow(0 0 20px rgba(200, 255, 0, 0.4)); transform: scale(1.05); }
 .cert-issuer { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lime); }
@@ -383,10 +394,25 @@ nav {
 .cert-desc { font-size: 11px; color: var(--muted); line-height: 1.7; flex: 1; }
 .cert-card--wide { grid-column: span 2; }
 
-/* â”€â”€â”€ PROJECTS â”€â”€â”€ */
+/* only real links (not the "em breve" divs) get the external-link cue */
+a.cert-card .cert-name::after {
+  content: '↗';
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: var(--lime);
+  opacity: 0;
+  transform: translate(-4px, 2px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+a.cert-card:hover .cert-name::after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ─── PROJECTS ─── */
 #projects { padding: 5rem 3rem; border-top: 1px solid var(--border); }
 
-/* â”€â”€â”€ CONTACT â”€â”€â”€ */
+/* ─── CONTACT ─── */
 #contact { border-top: 1px solid var(--border); min-height: 60vh; display: grid; grid-template-columns: 1fr 1fr; }
 .contact-left { padding: 5rem 3rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: space-between; }
 .contact-heading { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.9; letter-spacing: 0.02em; }
@@ -403,7 +429,7 @@ nav {
 .contact-arrow { font-size: 1.2rem; color: var(--muted); transition: color 0.3s, transform 0.3s; }
 .contact-link-item:hover .contact-arrow { color: var(--lime); transform: translate(4px, -4px); }
 
-/* â”€â”€â”€ FOOTER â”€â”€â”€ */
+/* ─── FOOTER ─── */
 footer {
   border-top: 1px solid var(--border);
   padding: 1.5rem 3rem;
@@ -416,7 +442,7 @@ footer {
   color: var(--muted);
 }
 
-/* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   nav { padding: 1.2rem 1.5rem; }
   .nav-links { display: none; }
@@ -464,7 +490,22 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-/* â”€â”€â”€ PROFILE PHOTO â”€â”€â”€ */
+.cert-card--expired { opacity: 0.7; }
+.cert-card--expired:hover { opacity: 1; }
+.cert-expired-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  background: var(--black);
+}
+
+/* ─── PROFILE PHOTO ─── */
 .hero-photo {
   width: 220px;
   height: 220px;
@@ -480,7 +521,7 @@ footer {
   filter: grayscale(0%);
 }
 
-/* â”€â”€â”€ PROJECTS â”€â”€â”€ */
+/* ─── PROJECTS ─── */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -538,7 +579,7 @@ footer {
 }
 
 .project-bullets li::before {
-  content: "â€”";
+  content: "—";
   position: absolute;
   left: 0;
   color: #c8ff00;
