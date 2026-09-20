@@ -1,0 +1,41 @@
+# texwiller.com.br — robots.txt
+
+# Regra padrão: liberado para todos os crawlers
+User-agent: *
+Allow: /
+
+# Content Signals — preferências de uso do conteúdo por IA
+# search=yes    -> pode ser indexado por buscadores (incluindo os usados por assistentes de IA)
+# ai-input=yes  -> agentes de IA podem ler o conteúdo em tempo real para responder perguntas
+# ai-train=no   -> conteúdo não pode ser usado para treinar modelos de IA
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+# Crawlers de IA conhecidos — mesma política acima, explícita por nome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://texwiller.com.br/sitemap.xml
